@@ -18,29 +18,14 @@ export INSTALL_PREFIX=$1
 
 # GRASS GIS
 
-git clone https://github.com/OSGeo/grass.git
+git clone https://github.com/rkanavath/grass.git --branch cmake_build2 --depth=1
 
 cd grass
 
-./configure \
-    --prefix="$INSTALL_PREFIX/" \
-    --enable-largefile \
-    --with-cxx \
-    --with-zstd \
-    --with-bzlib \
-    --with-blas \
-    --with-lapack \
-    --with-readline \
-    --with-openmp \
-    --with-pthread \
-    --with-tiff \
-    --with-freetype \
-    --with-freetype-includes="/usr/include/freetype2/" \
-    --with-proj-share=/usr/share/proj \
-    --with-geos \
-    --with-sqlite \
-    --with-fftw \
-    --with-netcdf
+mkdir build
+cd build
+
+cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ..
 
 make
 make install
