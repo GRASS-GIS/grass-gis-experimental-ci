@@ -24,9 +24,9 @@ jobs:
             libfftw3-dev \
             libcairo-dev \
             libnetcdf-dev \
+            libgdal-dev \
+            libproj-dev \
             python3-six \
-            gdal-dev \
-            proj-dev \
             sqlite3
     - name: Create installation directory
       run: mkdir install
