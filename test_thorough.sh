@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 grass79 --tmp-location XY --exec \
     g.extension g.download.location
