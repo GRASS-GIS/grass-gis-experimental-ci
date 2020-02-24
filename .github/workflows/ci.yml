@@ -24,8 +24,8 @@ jobs:
     - name: Set LD_LIBRARY_PATH for GRASS GIS compilation
       run: |
         echo "::set-env name=LD_LIBRARY_PATH::$HOME/install/lib"
-    - name: Get and compile GRASS GIS
-      run: ./compile.sh $HOME/install
+    - name: Get and build GRASS GIS
+      run: ./build.sh $HOME/install
     - name: Add the bin directory to PATH
       run: |
         echo "::add-path::$HOME/install/bin"
