@@ -12,22 +12,9 @@ jobs:
     - name: Get dependencies
       run: |
         sudo apt-get update -y
-        sudo apt-get install -y wget git
-        sudo apt-get install -y \
-            build-essential \
-            flex \
-            bison \
-            zlib1g-dev \
-            libpng-dev \
-            libgl1-mesa-dev \
-            libglu1-mesa-dev \
-            libfftw3-dev \
-            libcairo-dev \
-            libnetcdf-dev \
-            libgdal-dev \
-            libproj-dev \
-            python3-six \
-            sqlite3
+        sudo apt-get install -y wget git gawk findutils
+        xargs -a <(awk '! /^ *(#|$)/' "apt.txt") -r -- \
+            sudo apt-get install -y --no-install-recommends --no-install-suggests
     - name: Create installation directory
       run: mkdir install
     - name: Set number of cores for compilation
