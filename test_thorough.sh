@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# fail on non-zero return code from a subprocess
+set -e
+
 grass79 --tmp-location XY --exec \
     g.extension g.download.location
 grass79 --tmp-location XY --exec \

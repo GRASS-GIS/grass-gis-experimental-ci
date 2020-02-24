@@ -5,6 +5,9 @@
 # further steps additionally require:
 # export PATH="$PATH:$PREFIX/bin"
 
+# fail on non-zero return code from a subprocess
+set -e
+
 if [ -z "$1" ]
 then
     echo "Usage: $0 PREFIX"
