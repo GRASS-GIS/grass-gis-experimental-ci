@@ -15,5 +15,6 @@ libproj-dev
 libreadline-dev
 libzstd-dev
 python3-six
+python3-wxgtk4.0
 sqlite3
 zlib1g-dev
