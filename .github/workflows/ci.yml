@@ -16,7 +16,8 @@ jobs:
         xargs -a <(awk '! /^ *(#|$)/' "apt.txt") -r -- \
             sudo apt-get install -y --no-install-recommends --no-install-suggests
     - name: Create installation directory
-      run: mkdir install
+      run: |
+        mkdir $HOME/install
     - name: Set number of cores for compilation
       run: |
         echo "::set-env name=MAKEFLAGS::-j$(nproc)"
