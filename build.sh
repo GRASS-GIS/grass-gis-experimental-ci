@@ -25,7 +25,10 @@ cd grass
 mkdir build
 cd build
 
-cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ..
+cmake \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    -DPostgreSQL_TYPE_INCLUDE_DIR="/usr/include/postgresql" \
+    ..
 
 make
 make install

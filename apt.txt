@@ -10,6 +10,7 @@ libglu1-mesa-dev
 libnetcdf-dev
 libopenblas-dev
 libpng-dev
+libpq-dev
 libproj-dev
 libreadline-dev
 libzstd-dev
