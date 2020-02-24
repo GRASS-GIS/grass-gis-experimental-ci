@@ -14,7 +14,7 @@ then
     exit 1
 fi
 
-export INSTALL_PREFIX=$argv[1]
+export INSTALL_PREFIX=$1
 
 # GRASS GIS
 
