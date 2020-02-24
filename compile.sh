@@ -11,8 +11,7 @@ then
     exit 1
 fi
 
-set INSTALL_PREFIX=$argv[1]
-set LIBPREFIX=$INSTALL_PREFIX
+export INSTALL_PREFIX=$argv[1]
 
 # GRASS GIS
 
@@ -26,10 +25,14 @@ cd grass
     --with-cxx \
     --with-zstd \
     --with-bzlib \
+    --with-blas \
+    --with-lapack \
+    --with-readline \
     --with-openmp \
+    --with-pthread \
     --with-tiff \
     --with-freetype \
-    --with-freetype-includes="$LIBPREFIX/include/freetype2" \
+    --with-freetype-includes="/usr/include/freetype2/" \
     --with-proj-share=/usr/share/proj \
     --with-geos \
     --with-sqlite \
