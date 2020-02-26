@@ -1,5 +1,6 @@
 bison
 build-essential
+cmake
 flex
 libbz2-dev
 libcairo-dev
