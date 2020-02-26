@@ -18,7 +18,7 @@ export INSTALL_PREFIX=$1
 
 # GRASS GIS
 
-git clone https://github.com/rkanavath/grass.git --branch cmake_build2 --depth=1
+git clone https://github.com/rkanavath/grass.git --branch ctypesgencore_py3 --depth=1
 
 cd grass
 
