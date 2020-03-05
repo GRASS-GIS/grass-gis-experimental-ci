@@ -14,6 +14,7 @@ jobs:
         brew cask install xquartz
         brew tap osgeo/osgeo4mac
         brew install osgeo-grass
+      continue-on-error: true
     - name: brew test
       run: |
         brew test -v osgeo-grass
