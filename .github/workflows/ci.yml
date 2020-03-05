@@ -11,6 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: brew install
       run: |
+        brew cask install xquartz
         brew tap osgeo/osgeo4mac
         brew install osgeo-grass
     - name: brew test
