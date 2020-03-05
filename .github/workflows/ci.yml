@@ -15,7 +15,7 @@ jobs:
         brew install osgeo-grass
     - name: brew test
       run: |
-        brew test -v grass-78
+        brew test -v osgeo-grass
     - name: Basic test of GRASS GIS
       run: ./test_simple.sh
     - name: Thorough test of GRASS GIS
