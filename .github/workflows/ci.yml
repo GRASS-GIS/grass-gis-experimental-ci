@@ -5,30 +5,17 @@ on: [push]
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: macos-10.15
 
     steps:
     - uses: actions/checkout@v2
-    - name: Get dependencies
+    - name: brew install
       run: |
-        sudo apt-get update -y
-        sudo apt-get install -y wget git gawk findutils
-        xargs -a <(awk '! /^ *(#|$)/' "apt.txt") -r -- \
-            sudo apt-get install -y --no-install-recommends --no-install-suggests
-    - name: Create installation directory
+        brew tap osgeo/osgeo4mac
+        brew install osgeo-grass
+    - name: brew test
       run: |
-        mkdir $HOME/install
-    - name: Set number of cores for compilation
-      run: |
-        echo "::set-env name=MAKEFLAGS::-j$(nproc)"
-    - name: Set LD_LIBRARY_PATH for GRASS GIS compilation
-      run: |
-        echo "::set-env name=LD_LIBRARY_PATH::$HOME/install/lib"
-    - name: Get and build GRASS GIS
-      run: ./build.sh $HOME/install
-    - name: Add the bin directory to PATH
-      run: |
-        echo "::add-path::$HOME/install/bin"
+        brew test -v grass-78
     - name: Basic test of GRASS GIS
       run: ./test_simple.sh
     - name: Thorough test of GRASS GIS
