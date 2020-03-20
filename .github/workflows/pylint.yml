@@ -37,9 +37,6 @@ jobs:
     - name: Add the bin directory to PATH
       run: |
         echo "::add-path::$HOME/install/bin"
-    - name: Put configuration file in place
-      run: |
-        cp .pylintrc 
     - name: Run Pylint
       run: |
         grass79 --tmp-location XY --exec pylint --rcfile=.pylintrc --reports=n --score=n -j2 ../../grass/lib/python
