@@ -1,0 +1,45 @@
+name: Code quality check with Pylint
+
+on: [push]
+
+jobs:
+  pylint:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install
+      run: |
+        python -m pip install --upgrade pip
+        pip install pylint
+    - name: Get dependencies
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install -y wget git gawk findutils
+        xargs -a <(awk '! /^ *(#|$)/' "apt.txt") -r -- \
+            sudo apt-get install -y --no-install-recommends --no-install-suggests
+    - name: Create installation directory
+      run: |
+        mkdir $HOME/install
+    - name: Set number of cores for compilation
+      run: |
+        echo "::set-env name=MAKEFLAGS::-j$(nproc)"
+    - name: Set LD_LIBRARY_PATH for GRASS GIS compilation
+      run: |
+        echo "::set-env name=LD_LIBRARY_PATH::$HOME/install/lib"
+    - name: Get and build GRASS GIS
+      run: ./build.sh $HOME/install
+    - name: Add the bin directory to PATH
+      run: |
+        echo "::add-path::$HOME/install/bin"
+    - name: Put configuration file in place
+      run: |
+        cp .pylintrc 
+    - name: Run Pylint
+      run: |
+        grass79 --tmp-location XY --exec pylint --rcfile=.pylintrc --reports=n --score=n -j2 ../../grass/lib/python
