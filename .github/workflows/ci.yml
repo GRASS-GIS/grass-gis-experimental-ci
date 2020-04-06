@@ -9,15 +9,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: brew install
-      run: |
-        brew cask install xquartz
-        brew tap osgeo/osgeo4mac
-        brew install osgeo-grass
-      continue-on-error: true
-    - name: brew test
-      run: |
-        brew test -v osgeo-grass
+    - name: Prepare conda environment
+      uses: goanpeca/setup-miniconda@v1
+      with:
+        auto-update-conda: true
+        python-version: 3.6.10
+        activate-environment: grass79_conda
+        environment-file: environment.yml
+    - name: Get and build GRASS GIS
+      run: ./build.sh
     - name: Basic test of GRASS GIS
       run: ./test_simple.sh
     - name: Thorough test of GRASS GIS
