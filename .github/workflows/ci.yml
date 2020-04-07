@@ -17,8 +17,11 @@ jobs:
         activate-environment: grass79_conda
         environment-file: environment.yml
     - name: Get and build GRASS GIS
+      shell: bash -l {0}
       run: ./build.sh
     - name: Basic test of GRASS GIS
+      shell: bash -l {0}
       run: ./test_simple.sh
     - name: Thorough test of GRASS GIS
+      shell: bash -l {0}
       run: ./test_thorough.sh
