@@ -22,6 +22,6 @@ do
     patch -p0 < $FILE
 done
 
-bash configure.sh
+bash ../configure.sh
 make GDAL_DYNAMIC=
 make install
