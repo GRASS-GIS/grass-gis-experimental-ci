@@ -62,4 +62,4 @@ CONFIGURE_FLAGS="\
 # --with-pdal=$PREFIX/bin/pdal-config \
 # --with-pdal-libs=$PREFIX/lib \
 
-./configure $CONFIGURE_FLAGS
+./configure $CONFIGURE_FLAGS || (cat "config.log" && echo "ERROR in configure step" && exit -1)
