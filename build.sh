@@ -8,12 +8,6 @@
 # fail on non-zero return code from a subprocess
 set -e
 
-if [ -z "$1" ]
-then
-    echo "Usage: $0 PREFIX"
-    exit 1
-fi
-
 export INSTALL_PREFIX=$1
 
 # GRASS GIS
