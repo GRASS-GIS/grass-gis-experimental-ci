@@ -14,6 +14,7 @@ jobs:
         os:
         - ubuntu-16.04
         - ubuntu-18.04
+      fail-fast: false
 
     steps:
     - uses: actions/checkout@v2
