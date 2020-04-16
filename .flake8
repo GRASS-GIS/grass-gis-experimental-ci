@@ -4,7 +4,44 @@ ignore =
     F821,
     E501,
     W503,
+    E117,
+    E121,
+    E122,
+    E123,
+    E124,
+    E125,
+    E126,
+    E127,
+    E128,
+    E129,
+    E201,
+    E202,
     E203,
+    E211,
+    E221,
+    E222,
+    E225,
+    E226,
+    E228,
+    E231,
+    E241,
+    E251,
+    E261, # at least two spaces before inline comment
+    E262, # inline comment should start with '# '
+    E266, # too many leading '#' for block comment
+    E301,
+    E302,
+    E303,
+    E305,
+    E402, # module level import not at top of file
+    E722, # do not use bare 'except'
+    E741, # ambiguous variable name 'l'
+    W291,
+    W292,
+    W293,
+    W391,
+    W504,
+
 max-line-length = 150
 exclude =
     .git,
