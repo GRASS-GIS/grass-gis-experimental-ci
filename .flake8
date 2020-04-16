@@ -29,6 +29,8 @@ ignore =
     E261, # at least two spaces before inline comment
     E262, # inline comment should start with '# '
     E266, # too many leading '#' for block comment
+    E271,
+    E272,
     E301,
     E302,
     E303,
