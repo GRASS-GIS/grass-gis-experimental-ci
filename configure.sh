@@ -3,9 +3,11 @@
 export PREFIX=$(python3 -c 'import sys; print(sys.prefix)')
 export PATH=$PREFIX/bin:/usr/bin:/bin:/usr/sbin:/etc:/usr/lib
 export GRASS_PYTHON=$(which pythonw)
+export CC=$PREFIX/bin/clang
+export CXX=$PREFIX/bin/clang++
+export MACOSX_DEPLOYMENT_TARGET=10.14
 
 CONFIGURE_FLAGS="\
-  --with-macosx-sdk=$CONDA_BUILD_SYSROOT \
   --enable-64bit \
   --with-macosx-archs=x86_64 \
   --with-opengl=aqua \
@@ -49,6 +51,8 @@ CONFIGURE_FLAGS="\
   --with-blas \
   --with-blas-libs=$PREFIX/lib \
   --with-blas-includes=$PREFIX/include \
+  --with-pdal=$PREFIX/bin/pdal-config \
+  --with-pdal-libs=$PREFIX/lib \
   --with-netcdf=$PREFIX/bin/nc-config \
   --with-nls \
   --with-libs=$PREFIX/lib \
@@ -59,7 +63,8 @@ CONFIGURE_FLAGS="\
 # --with-openmp \
 # --with-openmp-libs=$PREFIX/lib \
 # --with-openmp-includes=$PREFIX/include \
-# --with-pdal=$PREFIX/bin/pdal-config \
-# --with-pdal-libs=$PREFIX/lib \
+
+# --with-macosx-sdk=$CONDA_BUILD_SYSROOT \
+
 
 ./configure $CONFIGURE_FLAGS || (cat "config.log" && echo "ERROR in configure step" && exit -1)
