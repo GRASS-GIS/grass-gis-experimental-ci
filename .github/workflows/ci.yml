@@ -1,6 +1,8 @@
 name: CI
 
-on: [push]
+on:
+- push
+- pull_request
 
 jobs:
   build:
@@ -22,6 +24,6 @@ jobs:
     - name: Basic test of GRASS GIS
       shell: bash -l {0}
       run: ./test_simple.sh
-    - name: Thorough test of GRASS GIS
-      shell: bash -l {0}
-      run: ./test_thorough.sh
+#    - name: Thorough test of GRASS GIS
+#      shell: bash -l {0}
+#      run: ./test_thorough.sh
