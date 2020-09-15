@@ -6,8 +6,10 @@ export GRASS_PYTHON=$(which pythonw)
 export CC=$PREFIX/bin/clang
 export CXX=$PREFIX/bin/clang++
 export MACOSX_DEPLOYMENT_TARGET=10.14
+export CONDA_BUILD_SYSROOT=$(xcrun --show-sdk-path)
 
 CONFIGURE_FLAGS="\
+  --with-macosx-sdk=$CONDA_BUILD_SYSROOT \
   --enable-64bit \
   --with-macosx-archs=x86_64 \
   --with-opengl=aqua \
